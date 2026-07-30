@@ -40,6 +40,9 @@ const handleLogout = () => {
           {cartCount}
         </span>
       </Link>
+       <Link to="/my-orders">
+    My Orders
+  </Link>
 
       <button
         onClick={handleLogout}

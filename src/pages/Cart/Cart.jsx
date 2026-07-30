@@ -150,9 +150,9 @@ Continue Shopping
               <span>₹ {total}</span>
             </div>
 
-            <button className="mt-8 w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800">
-              Proceed To Checkout
-            </button>
+            <Link to="/checkout" className="block mt-8 w-full bg-black text-white text-center py-3 rounded-lg">
+                Proceed To Checkout
+            </Link>
           </div>
         </div>
       </div>

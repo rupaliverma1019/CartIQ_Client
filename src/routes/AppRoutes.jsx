@@ -9,6 +9,11 @@ import Unauthorized from "../pages/Unauthorized";
 import ProductDetails from "../pages/Product/ProductDetails";
 import ProtectedRoute from "./ProtectedRoute";
 import Cart from "../pages/Cart/Cart";
+import Checkout from "../pages/Checkout/Checkout";
+import Payment from "../pages/Payment/Payment";
+import OrderSuccess from "../pages/OrderSuccess/OrderSuccess";
+import MyOrders from "../pages/MyOrders";
+import OrderDetails from "../pages/OrderDetails";
 const AppRoutes = () => {
   return (
     <Routes>
@@ -37,7 +42,12 @@ const AppRoutes = () => {
       />
       <Route path="/product/:id" element={<ProductDetails />}/>
       <Route path="/cart" element={<Cart />}/>
-    </Routes>
+      <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>    }/>
+      <Route  path="/payment"  element={<ProtectedRoute><Payment /></ProtectedRoute>}/>
+<Route  path="/order-success"  element={<OrderSuccess />}/> 
+<Route  path="/my-orders"  element={<MyOrders />}/>
+<Route  path="/orders/:id"  element={<OrderDetails />}/>
+   </Routes>
     
     
   );
