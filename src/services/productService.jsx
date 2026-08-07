@@ -2,17 +2,96 @@ import axios from "axios";
 
 const API = "http://localhost:5000/api/v1/products";
 
-export const getProducts = async () => {
-  try {
-    const response = await axios.get(API);
-    console.log("Response:", response);
-    return response.data;
-  } catch (error) {
-    console.log("Error:", error.response);
-  }
+export const getProducts = async (filters) => {
+   const response = await axios.get(
+    API,
+    {
+      params: filters,
+    }
+  );
+
+  return response.data;
+
 };
 
 export const getProductById = async (id) => {
   const response = await axios.get(`${API}/${id}`);
   return response.data;
+};
+
+export const createProduct = async (
+  formData,
+  token
+) => {
+
+  const response = await axios.post(
+    API,
+    formData,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+
+  return response.data;
+
+};
+
+export const deleteProduct = async (
+  id,
+  token
+) => {
+
+  const response = await axios.delete(
+    `${API}/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
+
+};
+
+export const restoreProduct = async (
+  id,
+  token
+) => {
+
+  const response = await axios.put(
+    `${API}/restore/${id}`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
+};
+
+export const updateProduct = async (
+  id,
+  formData,
+  token
+) => {
+
+  const response = await axios.put(
+    `${API}/${id}`,
+    formData,
+    {
+      headers:{
+        Authorization:`Bearer ${token}`,
+        "Content-Type":"multipart/form-data"
+      }
+    }
+  );
+
+  return response.data;
+
 };

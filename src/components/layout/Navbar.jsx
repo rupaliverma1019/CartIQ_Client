@@ -33,24 +33,45 @@ const handleLogout = () => {
           <Link to="/">Home</Link>
           
           {user ? (
-            <>
-      <Link to="/cart">
-        Cart
-        <span className="ml-1 bg-red-500 text-white rounded-full px-2 text-xs">
-          {cartCount}
-        </span>
-      </Link>
-       <Link to="/my-orders">
+        <>
+  <Link to="/cart">
+    Cart
+    <span className="ml-1 bg-red-500 text-white rounded-full px-2 text-xs">
+      {cartCount}
+    </span>
+  </Link>
+
+  <Link to="/my-orders">
     My Orders
   </Link>
 
-      <button
-        onClick={handleLogout}
-        className="bg-red-500 px-4 py-2 rounded hover:bg-red-600"
-      >
-        Logout
-      </button>
-    </>
+  {/* Show only for Admin */}
+  {user?.role === "admin" && (
+  <>
+    <Link to="/admin/dashboard">
+      Dashboard
+    </Link>
+
+    <Link to="/admin/products">
+      Products
+    </Link>
+
+    <Link to="/admin/products/add">
+      Add Product
+    </Link>
+
+    <Link to="/admin/orders">
+      Orders
+    </Link>
+  </>
+)}
+  <button
+    onClick={handleLogout}
+    className="bg-red-500 px-4 py-2 rounded hover:bg-red-600"
+  >
+    Logout
+  </button>
+</>
           ) : (
             <>
               <Link to="/login">Login</Link>

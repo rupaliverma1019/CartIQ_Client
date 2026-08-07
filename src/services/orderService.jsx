@@ -46,3 +46,42 @@ export const getOrderDetails = async (
 
   return response.data;
 };
+
+export const getAllOrders = async (token) => {
+
+    const response = await axios.get(
+
+        `${API}/admin`,
+
+        {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }
+
+    );
+
+    return response.data;
+
+};
+
+export const updateOrderStatus = async (
+  id,
+  status,
+  token
+) => {
+
+  const response = await axios.put(
+    `${API}/${id}/status`,
+    {
+      status,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
+};

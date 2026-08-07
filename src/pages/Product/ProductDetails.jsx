@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { getProductById } from "../../services/productService";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
+import ProductRecommendations from "../../components/Recommendations/ProductRecommendations";
+
 const ProductDetails = () => {
 const dispatch = useDispatch();
   const { id } = useParams();
@@ -105,6 +107,9 @@ const handleAddToCart = () => {
  
 
       </div>
+
+      <ProductRecommendations productId={product._id}
+/>
 
     </div>
 

@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import { getOrderDetails } from "../services/orderService";
 
 const OrderDetails = () => {
   const { id } = useParams();
-
   const { token } = useSelector((state) => state.auth);
-
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -117,24 +114,24 @@ const OrderDetails = () => {
 
         <div className="flex justify-between mt-5">
           <span>Subtotal</span>
-          <span>₹{order.subtotal}</span>
+          <span>₹{(order.total ?? order.subtotal ?? 0).toFixed(2)}</span>
         </div>
 
         <div className="flex justify-between mt-2">
           <span>Shipping</span>
-          <span>₹{order.shipping}</span>
+          <span>₹{(order.shipping ?? 0).toFixed(2)}</span>
         </div>
 
         <div className="flex justify-between mt-2">
           <span>Tax</span>
-          <span>₹{order.tax}</span>
+          <span>₹{(order.tax ?? 0).toFixed(2)}</span>
         </div>
 
         <hr className="my-4" />
 
         <div className="flex justify-between text-xl font-bold">
           <span>Total</span>
-          <span>₹{order.total}</span>
+          <span>₹ {order.total ?? order.subtotal ?? 0}</span>
         </div>
       </div>
     </div>

@@ -35,25 +35,26 @@ console.log("Redux Token:", token);
       setLoading(true);
 
       const orderData = {
-        orderItems: cartItems.map((item) => ({
-          product: item._id,
-          title: item.title,
-          image: item.images?.[0]?.url || "",
-          price: item.price,
-          quantity: item.quantity,
-        })),
+  items: cartItems.map((item) => ({
+    product: item._id,
+    title: item.title,
+    image: item.images?.[0]?.url || "",
+    price: item.price,
+    quantity: item.quantity,
+  })),
 
-        shippingAddress,
+  shippingAddress,
 
-        paymentMethod,
+  paymentMethod,
 
-        subtotal,
+  subtotal,
 
-        shippingCharge,
+  shipping: shippingCharge,
 
-        totalPrice,
-      };
+  tax: 0,
 
+  total: totalPrice,
+};
       const data = await createOrder(orderData, token);
 
       console.log(data);
@@ -64,12 +65,14 @@ console.log("Redux Token:", token);
 
       navigate("/order-success");
     } catch (error) {
-      console.log(error);
+  console.log("Full Error:", error);
+  console.log("Response:", error.response);
+  console.log("Response Data:", error.response?.data);
 
-      alert(
-        error.response?.data?.message || "Failed to place order."
-      );
-    } finally {
+  alert(
+    error.response?.data?.message || "Failed to place order."
+  );
+} finally {
       setLoading(false);
     }
   };

@@ -14,6 +14,13 @@ import Payment from "../pages/Payment/Payment";
 import OrderSuccess from "../pages/OrderSuccess/OrderSuccess";
 import MyOrders from "../pages/MyOrders";
 import OrderDetails from "../pages/OrderDetails";
+import AdminOrders from "../pages/AdminOrders";
+import AdminDashboard from "../pages/AdminDashboard";
+import AddProduct from "../pages/AddProduct";
+import AdminProducts from "../pages/AdminProducts";
+import EditProduct from "../pages/EditProduct";
+import ProductRecommendations from "../components/Recommendations/ProductRecommendations";
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -47,6 +54,11 @@ const AppRoutes = () => {
 <Route  path="/order-success"  element={<OrderSuccess />}/> 
 <Route  path="/my-orders"  element={<MyOrders />}/>
 <Route  path="/orders/:id"  element={<OrderDetails />}/>
+<Route    path="/admin/orders"    element={<ProtectedRoute adminOnly><AdminOrders /></ProtectedRoute>   }/>
+ <Route  path="/admin/dashboard"  element={ <ProtectedRoute adminOnly> <AdminDashboard /> </ProtectedRoute>  }/>
+ <Route path="/admin/products/add" element={   <ProtectedRoute adminOnly>     <AddProduct />   </ProtectedRoute> }/>
+  <Route  path="/admin/products"  element={    <ProtectedRoute adminOnly>      <AdminProducts />    </ProtectedRoute> }/>
+ <Route path="/admin/products/edit/:id" element={<ProtectedRoute adminOnly><EditProduct/></ProtectedRoute>}/>
    </Routes>
     
     
