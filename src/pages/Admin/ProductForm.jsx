@@ -164,55 +164,21 @@ const ProductForm = ({ onSubmit, initialData = {} }) => {
 
         </label>
 
-        <select
-          name="category"
-          value={formData.category}
-          onChange={handleChange}
-          className="w-full border rounded p-3 mt-2"
-          required
-        >
+        <select name="category"  value={formData.category} onChange={handleChange} className="w-full border rounded p-3 mt-2" required >
+        <option value=""> All Categories        </option>
+        <option> Mobiles, Computers      </option>
+        <option> TV, Appliances, Electronics      </option>
+        <option>  Men's Fashion    </option>
+        <option>  Women's Fashion      </option>
+        <option>  Home, Kitchen, Pets       </option>
+        <option>Beauty, Health, Grocery      </option>
+        <option>Sports, Fitness, Bags, Luggage</option>
+        <option>Toys, Baby Products, Kids' Fashion</option>
+        <option>Car, Motorbike, Industrial</option>
+        <option>Books</option>
+        <option>Movies, Music & Video Games</option>
 
-          <option value="">
-
-          All Categories
-
-        </option>
-
-        <option>
-
-          Appliance
-
-        </option>
-        <option>
-
-         Mobile and Electronics
-
-        </option>
-        <option>
-
-         Books and Education
-
-        </option>
-        <option>
-
-         Groceries and Pet Supplies
-
-        </option>
-
-        <option>
-
-          Fashion
-
-        </option>
-
-        <option>
-
-          Shoes
-
-        </option>
-
-
-        </select>
+       </select>
 
       </div>
 

@@ -26,7 +26,7 @@ const handleLogout = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
 
         <h1 className="text-2xl font-bold">
-          MERN Store
+         CartIQ
         </h1>
 
         <div className="space-x-5">
@@ -63,6 +63,7 @@ const handleLogout = () => {
     <Link to="/admin/orders">
       Orders
     </Link>
+    <Link to="/wishlist">❤️ Wishlist</Link>
   </>
 )}
   <button

@@ -8,7 +8,7 @@ import Pagination from "../../components/Pagination";
 import AISearch from "../../components/AI/AISearch";
 import { getProducts } from "../../services/productService";
 import PersonalRecommendations from "../../components/Home/PersonalRecommendations";
-import TestWishlist from "./TestWishlist";
+
 
 
 const Home = () => {
@@ -54,7 +54,7 @@ const Home = () => {
       <Hero />
 {/* ai search */}
 <AISearch />
-<TestWishlist/>
+
       {/* Category */}
       <section className="py-10">
         <CategorySection />

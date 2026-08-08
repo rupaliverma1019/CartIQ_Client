@@ -20,6 +20,9 @@ import AddProduct from "../pages/AddProduct";
 import AdminProducts from "../pages/AdminProducts";
 import EditProduct from "../pages/EditProduct";
 import ProductRecommendations from "../components/Recommendations/ProductRecommendations";
+import Wishlist from "../pages/Wishlist/Wishlist";
+
+
 
 const AppRoutes = () => {
   return (
@@ -59,6 +62,7 @@ const AppRoutes = () => {
  <Route path="/admin/products/add" element={   <ProtectedRoute adminOnly>     <AddProduct />   </ProtectedRoute> }/>
   <Route  path="/admin/products"  element={    <ProtectedRoute adminOnly>      <AdminProducts />    </ProtectedRoute> }/>
  <Route path="/admin/products/edit/:id" element={<ProtectedRoute adminOnly><EditProduct/></ProtectedRoute>}/>
+ <Route path="/wishlist" element={<Wishlist/>}/>
    </Routes>
     
     

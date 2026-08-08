@@ -1,52 +1,46 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
+import WishlistButton from "../Wishlist/WishlistButton";
 
-const ProductCard = ({product}) => {
-   
-     const dispatch = useDispatch();
+const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-  dispatch(addToCart(product));
-
-};
+    dispatch(addToCart(product));
+  };
 
   return (
- <div className="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+    <div className="border rounded-lg p-4 relative">
+      {/* Wishlist Button */}
+      <div className="absolute top-3 right-3">
+        <WishlistButton productID={product._id} />
+      </div>
 
-  <Link to={`/product/${product._id}`}>
-    <img
-      src={
-        product.images?.length
-          ? product.images[0].url
-          : "https://via.placeholder.com/300"
-      }
-      alt={product.title}
-      className="h-56 w-full object-cover"
-    />
+      <Link to={`/products/${product._id}`}>
+        <img
+          src={product.images?.[0]?.url}
+          alt={product.title}
+          className="w-full h-48 object-cover rounded"
+        />
 
-    <div className="p-4">
-      <h3 className="font-bold text-lg">
-        {product.title}
-      </h3>
+        <h3 className="font-bold text-lg mt-3">
+          {product.title}
+        </h3>
 
-      <p className="text-gray-500">
-        ₹ {product.price}
-      </p>
+        <p className="text-gray-500">
+          ₹ {product.price}
+        </p>
+      </Link>
+
+      <button
+        onClick={handleAddToCart}
+        className="mt-4 w-full bg-black text-white py-2 rounded"
+      >
+        Add to Cart
+      </button>
     </div>
-  </Link>
+  );
+};
 
-  <button
-  onClick={handleAddToCart}
-  className="mt-8 bg-black text-white px-8 py-3 rounded-lg"
->
-  Add To Cart
-</button>
-
-</div>
-  )
-}
-
-export default ProductCard
-
-  
+export default ProductCard;
