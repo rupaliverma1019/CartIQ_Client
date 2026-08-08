@@ -40,7 +40,7 @@ const handleLogout = () => {
       {cartCount}
     </span>
   </Link>
-
+ <Link to="/wishlist">❤️ Wishlist</Link>
   <Link to="/my-orders">
     My Orders
   </Link>
@@ -63,7 +63,7 @@ const handleLogout = () => {
     <Link to="/admin/orders">
       Orders
     </Link>
-    <Link to="/wishlist">❤️ Wishlist</Link>
+   
   </>
 )}
   <button
