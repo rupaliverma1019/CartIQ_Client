@@ -1,11 +1,9 @@
-import axios from "axios";
-
-const API = "http://localhost:5000/api/v1/wishlist";
+import api from "./api";
 
 // Add product to wishlist
 export const addToWishlist = async (productID, token) => {
-  const { data } = await axios.post(
-    API,
+  const { data } = await api.post(
+    "/wishlist",
     { productID },
     {
       headers: {
@@ -19,7 +17,7 @@ export const addToWishlist = async (productID, token) => {
 
 // Get wishlist
 export const getWishlist = async (token) => {
-  const { data } = await axios.get(API, {
+  const { data } = await api.get("/wishlist", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -29,36 +27,34 @@ export const getWishlist = async (token) => {
 };
 
 // Remove wishlist item
-export const removeWishlist = async (
-  productID,
-  token
-) => {
-  const { data } = await axios.delete(
-    `${API}/${productID}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+export const removeWishlist = async (productID, token) => {
+  const { data } = await api.delete(`/wishlist/${productID}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   return data;
 };
 
 // Check wishlist
-export const checkWishlist = async (
-  productID,
-  token
-) => {
-  const { data } = await axios.get(
-    `${API}/check/${productID}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+export const checkWishlist = async (productID, token) => {
+  const { data } = await api.get(`/wishlist/check/${productID}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   return data;
 };
 
+// AI Smart Wishlist
+export const getSmartWishlist = async (token) => {
+  const { data } = await api.get("/wishlist/smart", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return data;
+};

@@ -1,10 +1,7 @@
-import axios from "axios";
-
-const API = "http://localhost:5000/api/v1/dashboard";
+import api from "./api";
 
 export const getDashboardStats = async (token) => {
-
-  const response = await axios.get(API, {
+  const response = await api.get("/dashboard", {
     headers: {
       Authorization: `Bearer ${token}`,
     },

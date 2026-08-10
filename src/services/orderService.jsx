@@ -1,10 +1,8 @@
-import axios from "axios";
-
-const API = "http://localhost:5000/api/v1/orders";
+import api from "./api";
 
 export const createOrder = async (orderData, token) => {
-  const response = await axios.post(
-    API,
+  const response = await api.post(
+    "/orders",
     orderData,
     {
       headers: {
@@ -17,8 +15,8 @@ export const createOrder = async (orderData, token) => {
 };
 
 export const getMyOrders = async (token) => {
-  const response = await axios.get(
-    `${API}/my-orders`,
+  const response = await api.get(
+    "/orders/my-orders",
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -29,14 +27,9 @@ export const getMyOrders = async (token) => {
   return response.data;
 };
 
-
-export const getOrderDetails = async (
-  id,
-  token
-) => {
-
-  const response = await axios.get(
-    `${API}/${id}`,
+export const getOrderDetails = async (id, token) => {
+  const response = await api.get(
+    `/orders/${id}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -48,31 +41,21 @@ export const getOrderDetails = async (
 };
 
 export const getAllOrders = async (token) => {
+  const response = await api.get(
+    "/orders/admin",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
-    const response = await axios.get(
-
-        `${API}/admin`,
-
-        {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        }
-
-    );
-
-    return response.data;
-
+  return response.data;
 };
 
-export const updateOrderStatus = async (
-  id,
-  status,
-  token
-) => {
-
-  const response = await axios.put(
-    `${API}/${id}/status`,
+export const updateOrderStatus = async (id, status, token) => {
+  const response = await api.put(
+    `/orders/${id}/status`,
     {
       status,
     },

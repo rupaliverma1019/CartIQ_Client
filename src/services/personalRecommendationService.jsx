@@ -1,15 +1,11 @@
-import axios from "axios";
+import api from "./api";
 
-const API = "http://localhost:5000/api/v1";
+export const getPersonalRecommendations = async (token) => {
+  const { data } = await api.get("/recommendations/personal", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
-export const getPersonalRecommendations  = async(token) =>{
-    const {data} = await axios.get(`${API}/recommendations/personal`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-    )
-
-    return data;
-}
+  return data;
+};
