@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getWishlist, removeWishlist } from "../../services/wishlistService"
 import { addToCart } from "../../redux/slices/cartSlice"
+import SmartWishlist from "../../components/Wishlist/SmartWishlist"
 
 
 const Wishlist = () => {
@@ -53,10 +54,6 @@ const Wishlist = () => {
     }
   };
 
-
-
-
-
     const handleAddToCart = (product) => {
         dispatch(addToCart(product))
     }
@@ -80,89 +77,7 @@ if (loading) {
     );
   }
 
-  // return (
-  //   <div>
-  //       <h1 className="text-3xl font-bold mb-8">
-  //       ❤️ My Wishlist
-  //     </h1>
 
-  //     {
-  //       wishlist.length===0 ? (
-  //           <div className="text-center py-20">
-
-  //         <h2 className="text-2xl font-semibold">
-  //           Your wishlist is empty
-  //         </h2>
-
-  //         <p className="text-gray-500 mt-2">
-  //           Add products you love to your wishlist.
-  //         </p>
-
-  //       </div>
-  //       ) : (
-  //           <div>
-  //               {wishlist.map((item)=>{
-  //                   const product = item.product || item
-  //                   return(
-  //                       <div
-  //               key={product._id}
-  //               className="border rounded-xl p-4 shadow-sm hover:shadow-lg transition"
-  //             >
-
-  //               {/* Product Image */}
-
-  //               <img
-  //                 src={product.images?.[0]?.url}
-  //                 alt={product.title}
-  //                 className="w-full h-60 object-cover rounded-lg"
-  //               />
-
-  //               {/* Product Information */}
-
-  //               <h2 className="text-xl font-bold mt-4">
-  //                 {product.title}
-  //               </h2>
-
-  //               <p className="text-gray-600 mt-2">
-  //                 ₹ {product.price}
-  //               </p>
-
-  //               {/* Buttons */}
-
-  //               <div className="flex gap-3 mt-5">
-
-  //                 <button
-  //                   onClick={() =>
-  //                     handleAddToCart(product)
-  //                   }
-  //                   className="flex-1 bg-black text-white py-3 rounded-lg hover:bg-gray-800"
-  //                 >
-  //                   Add to Cart
-  //                 </button>
-
-  //                 <button
-  //                   onClick={() =>
-  //                     handleRemove(product._id)
-  //                   }
-  //                   className="bg-red-500 text-white px-4 py-3 rounded-lg hover:bg-red-600"
-  //                 >
-  //                   Remove
-  //                 </button>
-
-  //               </div>
-
-  //             </div>
-  //           );
-                    
-  //               })
-  //               }
-  //           </div>
-  //       )
-
-  //     }
-
-  //   </div>
-  // )
 
   
 return (
@@ -379,7 +294,7 @@ return (
 
       </div>
     )}
-
+<SmartWishlist/>
   </div>
 );
 }

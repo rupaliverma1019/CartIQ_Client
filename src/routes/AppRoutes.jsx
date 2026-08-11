@@ -21,6 +21,7 @@ import AdminProducts from "../pages/AdminProducts";
 import EditProduct from "../pages/EditProduct";
 import ProductRecommendations from "../components/Recommendations/ProductRecommendations";
 import Wishlist from "../pages/Wishlist/Wishlist";
+import AISearch from "../components/AI/AISearch";
 
 
 
@@ -63,6 +64,7 @@ const AppRoutes = () => {
   <Route  path="/admin/products"  element={    <ProtectedRoute adminOnly>      <AdminProducts />    </ProtectedRoute> }/>
  <Route path="/admin/products/edit/:id" element={<ProtectedRoute adminOnly><EditProduct/></ProtectedRoute>}/>
  <Route path="/wishlist" element={<Wishlist/>}/>
+ <Route path="/ai-search" element={<AISearch />} />
    </Routes>
     
     

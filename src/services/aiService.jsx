@@ -1,12 +1,10 @@
-import axios from "axios";
+import api from "./api";
 
-const API = "http://localhost:5000/api/v1/ai";
-
+// AI Product Search
 export const searchAIProducts = async (prompt) => {
-  const response = await axios.post(
-    `${API}/search`,
-    { prompt }
-  );
+  const { data } = await api.post("/ai/search", {
+    prompt,
+  });
 
-  return response.data;
+  return data;
 };

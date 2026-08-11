@@ -5,3 +5,13 @@ export const recommendationService = async (productId) => {
 
   return data;
 };
+
+
+export const getPersonalizedRecommendations = async (token) => { 
+  const { data } = await api.get("/recommendations/personalized", 
+    {
+       headers:
+        { Authorization: `Bearer ${token}`, },
+   });
+    return data;
+   };

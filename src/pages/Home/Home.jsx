@@ -5,9 +5,9 @@ import FeaturedProducts from "../../components/Home/FeaturedProducts";
 import Hero from "../../components/Home/Hero";
 import ProductFilter from "../../components/ProductFilter";
 import Pagination from "../../components/Pagination";
-import AISearch from "../../components/AI/AISearch";
 import { getProducts } from "../../services/productService";
 import PersonalRecommendations from "../../components/Home/PersonalRecommendations";
+// import RecommendedForYou from "../../components/Recommendations/RecommendedForYou";
 
 
 
@@ -52,8 +52,7 @@ const Home = () => {
 
       {/* Hero */}
       <Hero />
-{/* ai search */}
-<AISearch />
+
 
       {/* Category */}
       <section className="py-10">
@@ -88,6 +87,7 @@ const Home = () => {
         ) : (
           <>
             <FeaturedProducts products={products} />
+            {/* <RecommendedForYou/> */}
             <PersonalRecommendations/>
             <div className="mt-12 flex justify-center">
               <Pagination
